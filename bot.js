@@ -1,8 +1,8 @@
 var telegram = require('telegram-bot-api');
-
+var token = require('./token').token ;
 
 var api = new telegram({
-	token: '<teken>',
+	token: token,
 	updates: {
 		enabled: true
 	}
