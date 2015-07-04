@@ -30,7 +30,7 @@ api.on('message', function(message) {
 	} else if (income_text == "/emam_raoof" || income_text == "emam_raoof") {
 		text = "نزدیک ترین اعزام،دشنبه عصر.";
 	} else {
-		text = "Menu\n" + 
+		text = "/menu -> this help page\n" + 
 		"/fadaiian -> fadaiian report" + "\n" + 
 		"/fakor -> fakor report" + "\n" + 
 		"/keramat -> keramat report" + "\n" + 
