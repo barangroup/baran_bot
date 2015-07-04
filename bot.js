@@ -21,8 +21,21 @@ api.on('message', function(message) {
 
 	if (income_text == "/fadaiian" || income_text == "fadaiian") {
 		text = "نزدیک ترین اعزام، یکشنبه ساعت ۵ عصر.";
+	} else if (income_text == "/fakor" || income_text == "fakor") {
+		text = "تا اطلاع بعدی اعزامی وجود ندارد.";
+	} else if (income_text == "/keramat" || income_text == "keramat") {
+		text = "در هفته جاری اعزامی وجود ندارد";
+	} else if (income_text == "/fereshtegan" || income_text == "fereshtegan") {
+		text = "نزدیک ترین اعزام، چهارشنبه عصر.";
+	} else if (income_text == "/emam_raoof" || income_text == "emam_raoof") {
+		text = "نزدیک ترین اعزام،دشنبه عصر.";
 	} else {
-		text = "Menu\n" + "/fadaiian -> fadaiian report";
+		text = "Menu\n" + 
+		"/fadaiian -> fadaiian report" + "\n" + 
+		"/fakor -> fakor report" + "\n" + 
+		"/keramat -> keramat report" + "\n" + 
+		"/fereshtegan -> fereshtegan report" + "\n" +
+		"/emam_raoof -> emam_raoof report" ;
 	}
 
 	api.sendMessage({
