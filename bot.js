@@ -30,7 +30,7 @@ api.on('message', function(message) {
 	} else if (income_text == "/emam_raoof" || income_text == "emam_raoof") {
 		text = "نزدیک ترین اعزام،دوشنبه عصر.";
 	} else if (income_text == "/info" || income_text == "info") {
-		text = "با استفده از این ربات میتوانید زمان اخرین اعزام ها به مراکز بهزیستی مختلف تویط گروه بارن را پنبال کنید.";
+		text = "با استفاده از این ربات میتوانید زمان اخرین اعزام ها به مراکز بهزیستی مختلف توسط گروه بارن را دنبال کنید.";
 	} else {
 		text = "/menu -> this help page\n" +
 			"/info -> info about this bot" + "\n" +
