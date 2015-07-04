@@ -1,26 +1,27 @@
 var telegram = require('telegram-bot-api');
-var token = require('./token').token ;
+var token = require('./token').token;
 
 var api = new telegram({
-	token: token,
+	token: token || "< API TOKEN >",
 	updates: {
 		enabled: true
 	}
 });
 
 api.on('message', function(message) {
-	var text = "";
-	var chat_id = message.chat.id;
-	console.log(message);
 
-	if (message.text == "فداییان" || message.text == "فدائیان") {
+	var income_text = message.text,
+		text = "",
+		chat_id = message.chat.id;
+
+	if (income_text == "/fadaiian" || income_text == "fadaiian") {
 		text = "نزدیک ترین اعزام، یکشنبه ساعت ۵ عصر.";
 	} else {
-		text = "سلام" + " " + message.from.username;
+		text = "Menu\n" + "/fadaiian -> fadaiian report";
 	}
 
 	api.sendMessage({
-		chat_id: message.chat.id,
+		chat_id: chat_id,
 		text: text
 	}, function(err, message) {
 		console.log(message);
