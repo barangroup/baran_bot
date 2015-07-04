@@ -1,8 +1,10 @@
-var telegram = require('telegram-bot-api');
-var token = require('./token').token;
+var telegram = require('telegram-bot-api'),
+	token = require('./token').token,
+	logger = require('./file_logger');
+
 
 var api = new telegram({
-	token: token || "< API TOKEN >",
+	token: token || "<API TOKEN>",
 	updates: {
 		enabled: true
 	}
@@ -11,8 +13,11 @@ var api = new telegram({
 api.on('message', function(message) {
 
 	var income_text = message.text,
+		name = message.chat.username || message.chat.last_name || message.chat.first_name,
 		text = "",
 		chat_id = message.chat.id;
+
+	logger.file_log('message from -> ' + name + " / text -> " + income_text);
 
 	if (income_text == "/fadaiian" || income_text == "fadaiian") {
 		text = "نزدیک ترین اعزام، یکشنبه ساعت ۵ عصر.";
@@ -23,7 +28,7 @@ api.on('message', function(message) {
 	api.sendMessage({
 		chat_id: chat_id,
 		text: text
-	}, function(err, message) {
-		console.log(message);
+	}, function(err, m) {
+		logger.file_log('reply to -> ' + name + " / text -> {\n" + m.text + "\n}");
 	});
 });
