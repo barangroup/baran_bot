@@ -2,11 +2,12 @@
   "name": "baran_bot",
   "version": "0.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "mongo/server.js",
   "scripts": {},
   "author": "elyas ghasemi",
   "license": "GPL3",
   "dependencies": {
+    "mongoose": "^4.0.6",
     "telegram-bot-api": "^0.3.0"
   }
 }
