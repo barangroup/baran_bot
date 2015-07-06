@@ -43,12 +43,7 @@ api.on('message', function(message) {
 
 	api.sendMessage({
 		chat_id: chat_id,
-		text: text,
-		reply_markup: {
-			keyboard: [
-				['/fadaiian','/fakoor']
-			]
-		}
+		text: text
 	}, function(err, m) {
 		logger.file_log('reply to -> ' + name + " / text -> {\n" + m.text + "\n}");
 	});
