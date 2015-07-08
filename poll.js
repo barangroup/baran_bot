@@ -40,12 +40,13 @@ api.on('message', function(message) {
 
 	var income_text = message.text,
 		chat_id = message.chat.id,
-		username = message.chat.username,
-		last_name = message.chat.last_name,
-		first_name = message.chat.first_name,
+		username = message.from.username,
+		last_name = message.from.last_name,
+		first_name = message.from.first_name,
+		user_id = message.from.id,
 		name = username || last_name || first_name;
 
-	console.log("*** " + username + " / " + first_name + " / " + last_name);
+	console.log(" *** " + username + " / " + first_name + " / " + last_name);
 
 	logger.file_log('#' + ++c + ' message from -> ' + name + " / text -> " + income_text);
 
@@ -55,9 +56,7 @@ api.on('message', function(message) {
 		reply(chat_id, help, name);
 	} else if (Number(income_text.charAt(0)) == income_text.charAt(0) && income_text.length > 3) {
 		db.poll.findOne({
-			username: username,
-			first_name: first_name,
-			last_name: last_name
+			user_id: user_id
 		}, function(err, user) {
 			if (err) {
 				reply(chat_id, error, name);
@@ -76,6 +75,7 @@ api.on('message', function(message) {
 				});
 			} else {
 				new db.poll({
+					user_id: user_id,
 					username: username,
 					first_name: first_name,
 					last_name: last_name,
@@ -95,9 +95,7 @@ api.on('message', function(message) {
 		});
 	} else if (income_text == "گزارش") {
 		db.poll.findOne({
-			username: username,
-			first_name: first_name,
-			last_name: last_name
+			user_id: user_id
 		}).lean().exec(function(err, user) {
 			if (err) {
 				console.log(err);
