@@ -14,7 +14,7 @@ var menu = "***  ربات نظر سنجی اعضای فعال باران.\n" +
 	"*برای اطلاع از شیوه ارسال پاسخ های خود کلمه \"راهنما\" را ارسال کنید." + "\n" +
 	"*برای دریافت سوال های نظر سنجی کلمه \"سوال\" را ارسال کنید.\n" +
 	"*برای بررسی پاسخ های خود کلمه \"گزارش\" را ارسال کنید." + "\n\n" +
-	"(اطلاعات شما محرمانه خواهد بود)\n" + 
+	"(اطلاعات شما محرمانه خواهد بود)\n" +
 	"گروه دانشجویی باران"
 
 var q = "۱-نحوه ى عضويت شما درگروه باران به چه شکل بوده است؟\n" +
@@ -27,7 +27,7 @@ var q = "۱-نحوه ى عضويت شما درگروه باران به چه شک
 	"*برای اطلاع از شیوه ارسال  پاسخ های خود کلمه \"راهنما\" را ارسال کنید." + "\n" +
 	"*برای بررسی پاسخ های خود کلمه \"گزارش\" را ارسال کنید." + "\n";
 
-var help = "*** لطفا جواب هر سوال را به صورت تشریحی با شروع با عدد لاتین شماره سوال ارسال کنید.\n" +
+var help = "*** لطفا جواب هر سوال را به صورت تک تک و تشریحی با شروع با عدد لاتین شماره سوال ارسال کنید.\n" +
 	"مثال :\n\n" + "1- با فرم عضویت و تشویق دوستان و ...\n\n" +
 	"*برای دریافت سوال های نظر سنجی کلمه \"سوال\" را ارسال کنید.\n" +
 	"*برای بررسی پاسخ های خود کلمه \"گزارش\" را ارسال کنید." + "\n";
@@ -54,7 +54,9 @@ api.on('message', function(message) {
 		reply(chat_id, help, name);
 	} else if (Number(income_text.charAt(0)) == income_text.charAt(0) && income_text.length > 3) {
 		db.poll.findOne({
-			username: username
+			username: username,
+			first_name: first_name,
+			last_name: last_name
 		}, function(err, user) {
 			if (err) {
 				reply(chat_id, error, name);
@@ -92,7 +94,9 @@ api.on('message', function(message) {
 		});
 	} else if (income_text == "گزارش") {
 		db.poll.findOne({
-			username: username
+			username: username,
+			first_name: first_name,
+			last_name: last_name
 		}).lean().exec(function(err, user) {
 			if (err) {
 				console.log(err);
