@@ -45,6 +45,7 @@ api.on('message', function(message) {
 		first_name = message.chat.first_name,
 		name = username || last_name || first_name;
 
+	console.log("*** " + username + " / " + first_name + " / " + last_name);
 
 	logger.file_log('#' + ++c + ' message from -> ' + name + " / text -> " + income_text);
 
