@@ -38,7 +38,7 @@ var c = 0;
 
 api.on('message', function(message) {
 
-	var income_text = message.text,
+	var income_text = message.text || "",
 		chat_id = message.chat.id,
 		username = message.from.username,
 		last_name = message.from.last_name,
