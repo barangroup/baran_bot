@@ -7,7 +7,7 @@
   "author": "elyas ghasemi",
   "license": "GPL3",
   "dependencies": {
-    "mongoose": "^4.0.6",
+    "mongoose": "^5.7.7",
     "telegram-bot-api": "^0.3.0"
   }
 }
